@@ -11,16 +11,16 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg:        #111111;
-      --surface:   #1C1C1C;
-      --surface-hi:#242424;
-      --border:    #2E2E2E;
-      --red:       #E8291A;
+      --bg:        #F7F4EE;
+      --surface:   #FFFFFF;
+      --surface-hi:#F0EDE6;
+      --border:    #DDD8CE;
+      --red:       #D42515;
       --yellow:    #FFD100;
       --green:     #1E8C32;
-      --white:     #F2F2F2;
-      --gray:      #888888;
-      --gray-dim:  #555555;
+      --white:     #111111;
+      --gray:      #6B6B6B;
+      --gray-dim:  #BBBBBB;
       --nav-h:     54px;
     }
 
@@ -334,6 +334,40 @@
     .item-name { line-height: 1.25; }
     .item-desc { margin-top: 3px; }
 
+    /* Sub-section label (used inside merged sections) */
+    .subsection-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800;
+      font-size: 1.05rem;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      color: var(--white);
+      padding: 20px 18px 0;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .subsection-label::before {
+      content: '';
+      width: 4px;
+      height: 1.1em;
+      background: var(--red);
+      flex-shrink: 0;
+      border-radius: 1px;
+    }
+    .subsection-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+    .subsection-note {
+      font-size: .83rem;
+      color: var(--gray);
+      font-style: italic;
+      padding: 5px 18px 4px;
+    }
+
     /* Option badges */
     .item-options {
       display: flex;
@@ -372,7 +406,7 @@
       font-family: 'Barlow Condensed', sans-serif;
       font-size: 1.5rem;
       font-weight: 800;
-      color: var(--yellow);
+      color: var(--red);
       white-space: nowrap;
       flex-shrink: 0;
       letter-spacing: -.01em;
@@ -395,7 +429,7 @@
       font-family: 'Barlow Condensed', sans-serif;
       font-size: 1.3rem;
       font-weight: 800;
-      color: var(--yellow);
+      color: var(--red);
       letter-spacing: -.01em;
     }
 
@@ -491,7 +525,7 @@
       font-family: 'Barlow Condensed', sans-serif;
       font-size: 1.6rem;
       font-weight: 800;
-      color: var(--yellow);
+      color: var(--red);
       display: block;
       margin-top: 6px;
       letter-spacing: -.01em;
@@ -632,13 +666,11 @@
     <a class="nav-tab" href="#meats"><span class="nav-en">Meats</span><span class="nav-es">Carnes</span></a>
     <a class="nav-tab" href="#seafood"><span class="nav-en">Seafood</span><span class="nav-es">Mariscos</span></a>
     <a class="nav-tab" href="#yaroas"><span class="nav-en">Yaroas</span><span class="nav-es">Yaroas</span></a>
-    <a class="nav-tab" href="#chimi"><span class="nav-en">Chimi</span><span class="nav-es">Chimi</span></a>
     <a class="nav-tab" href="#mofongos"><span class="nav-en">Mofongos</span><span class="nav-es">Mofongos</span></a>
     <a class="nav-tab" href="#heroes"><span class="nav-en">Heroes</span><span class="nav-es">Héroes</span></a>
     <a class="nav-tab" href="#pizza"><span class="nav-en">Pizza</span><span class="nav-es">Pizza</span></a>
     <a class="nav-tab" href="#beverages"><span class="nav-en">Drinks</span><span class="nav-es">Bebidas</span></a>
     <a class="nav-tab" href="#desserts"><span class="nav-en">Desserts</span><span class="nav-es">Postres</span></a>
-    <a class="nav-tab" href="#catering"><span class="nav-en">Catering</span><span class="nav-es">Catering</span></a>
   </div>
 </nav>
 
@@ -706,6 +738,31 @@
           </p>
         </div>
         <span class="item-price">$10</span>
+      </div>
+
+      <div class="menu-item">
+        <div class="item-info">
+          <p class="item-name">
+            <span class="lang-en">Garlic Knots</span>
+            <span class="lang-es">Nudos de Ajo</span>
+          </p>
+          <p class="item-desc">
+            <span class="lang-en">3 pieces</span>
+            <span class="lang-es">3 piezas</span>
+          </p>
+        </div>
+        <span class="item-price">$1</span>
+      </div>
+
+
+      <div class="menu-item">
+        <div class="item-info">
+          <p class="item-name">
+            <span class="lang-en">Tostones a la Mia</span>
+            <span class="lang-es">Tostones a la Mia</span>
+          </p>
+        </div>
+        <span class="item-price">—</span>
       </div>
 
     </div>
@@ -805,28 +862,12 @@
             <span class="lang-en">Caesar Salad</span>
             <span class="lang-es">Ensalada César</span>
           </p>
+          <p class="item-desc">
+            <span class="lang-en">Add Chicken +$5 &nbsp;·&nbsp; Add Shrimp +$7</span>
+            <span class="lang-es">Con Pollo +$5 &nbsp;·&nbsp; Con Camarones +$7</span>
+          </p>
         </div>
         <span class="item-price">$5</span>
-      </div>
-
-      <div class="menu-item">
-        <div class="item-info">
-          <p class="item-name">
-            <span class="lang-en">Caesar Salad w/ Grilled Chicken</span>
-            <span class="lang-es">Ensalada César con Pollo a la Plancha</span>
-          </p>
-        </div>
-        <span class="item-price">$10</span>
-      </div>
-
-      <div class="menu-item">
-        <div class="item-info">
-          <p class="item-name">
-            <span class="lang-en">Caesar Salad w/ Shrimp</span>
-            <span class="lang-es">Ensalada César con Camarones</span>
-          </p>
-        </div>
-        <span class="item-price">$17</span>
       </div>
 
     </div>
@@ -1121,8 +1162,8 @@
     <div class="section-header">
       <span class="section-icon">🥩</span>
       <h2 class="section-title">
-        <span class="section-en">Meats</span>
-        <span class="section-es">Carnes</span>
+        <span class="section-en">From the Kitchen</span>
+        <span class="section-es">De la Cocina</span>
       </h2>
     </div>
     <p class="section-note">
@@ -1490,110 +1531,6 @@
   </section>
 
   <!-- ── Chimichurri ── -->
-  <section id="chimi" class="menu-section">
-    <div class="section-header">
-      <span class="section-icon">🍔</span>
-      <h2 class="section-title">
-        <span class="section-en">Chimichurri</span>
-        <span class="section-es">Chimichurri</span>
-      </h2>
-    </div>
-    <p class="section-note">
-      <span class="lang-en">Dominican-style burgers — ask your server for pricing</span>
-      <span class="lang-es">Hamburguesas estilo dominicano — pregunte por los precios</span>
-    </p>
-    <hr class="section-divider" />
-    <div class="chimi-grid">
-      <div class="chimi-card">
-        <div class="chimi-dot"></div>
-        <div>
-          <span class="chimi-name">Beef</span>
-          <span class="chimi-name-es">Res</span>
-        </div>
-      </div>
-      <div class="chimi-card">
-        <div class="chimi-dot"></div>
-        <div>
-          <span class="chimi-name">Chicken</span>
-          <span class="chimi-name-es">Pollo</span>
-        </div>
-      </div>
-      <div class="chimi-card">
-        <div class="chimi-dot"></div>
-        <div>
-          <span class="chimi-name">Grilled Chicken</span>
-          <span class="chimi-name-es">Pollo a la Plancha</span>
-        </div>
-      </div>
-      <div class="chimi-card">
-        <div class="chimi-dot"></div>
-        <div>
-          <span class="chimi-name">Pork</span>
-          <span class="chimi-name-es">Cerdo</span>
-        </div>
-      </div>
-      <div class="chimi-card">
-        <div class="chimi-dot"></div>
-        <div>
-          <span class="chimi-name">Shrimp</span>
-          <span class="chimi-name-es">Camarones</span>
-        </div>
-      </div>
-      <div class="chimi-card">
-        <div class="chimi-dot"></div>
-        <div>
-          <span class="chimi-name">Vegan</span>
-          <span class="chimi-name-es">Vegano</span>
-        </div>
-      </div>
-      <div class="chimi-card chimi-special">
-        <div class="chimi-dot"></div>
-        <div>
-          <span class="chimi-name">Special Beef</span>
-          <span class="chimi-name-es">Especial de Res</span>
-        </div>
-      </div>
-      <div class="chimi-card chimi-special">
-        <div class="chimi-dot"></div>
-        <div>
-          <span class="chimi-name">Special Chicken</span>
-          <span class="chimi-name-es">Especial de Pollo</span>
-        </div>
-      </div>
-      <div class="chimi-card chimi-special">
-        <div class="chimi-dot"></div>
-        <div>
-          <span class="chimi-name">Special Pork</span>
-          <span class="chimi-name-es">Especial de Cerdo</span>
-        </div>
-      </div>
-      <div class="chimi-card chimi-special">
-        <div class="chimi-dot"></div>
-        <div>
-          <span class="chimi-name">Special Shrimp</span>
-          <span class="chimi-name-es">Especial de Camarones</span>
-        </div>
-      </div>
-      <div class="chimi-card chimi-special">
-        <div class="chimi-dot"></div>
-        <div>
-          <span class="chimi-name">Special Fish</span>
-          <span class="chimi-name-es">Especial de Pescado</span>
-        </div>
-      </div>
-      <div class="chimi-card chimi-special">
-        <div class="chimi-dot"></div>
-        <div>
-          <span class="chimi-name">Special Vegan</span>
-          <span class="chimi-name-es">Especial Vegano</span>
-        </div>
-      </div>
-    </div>
-    <p class="chimi-note">
-      <span class="lang-en">★ Specials include Fries &amp; a Can of Soda</span>
-      <span class="lang-es">★ Los especiales incluyen Papas Fritas y una Lata de Soda</span>
-    </p>
-  </section>
 
   <!-- ── Mofongos ── -->
   <section id="mofongos" class="menu-section">
@@ -1753,16 +1690,6 @@
       <div class="menu-item">
         <div class="item-info">
           <p class="item-name">
-            <span class="lang-en">Chicken Sandwich w/ Mozzarella</span>
-            <span class="lang-es">Sándwich de Pollo con Mozzarella</span>
-          </p>
-        </div>
-        <span class="item-price">$11</span>
-      </div>
-
-      <div class="menu-item">
-        <div class="item-info">
-          <p class="item-name">
             <span class="lang-en">Steak Sandwich</span>
             <span class="lang-es">Sándwich de Bistec</span>
           </p>
@@ -1773,21 +1700,40 @@
       <div class="menu-item">
         <div class="item-info">
           <p class="item-name">
-            <span class="lang-en">Steak Sandwich w/ Mozzarella</span>
-            <span class="lang-es">Sándwich de Bistec con Mozzarella</span>
-          </p>
-        </div>
-        <span class="item-price">$12</span>
-      </div>
-
-      <div class="menu-item">
-        <div class="item-info">
-          <p class="item-name">
             <span class="lang-en">Cuban Sandwich</span>
             <span class="lang-es">Sándwich Cubano</span>
           </p>
         </div>
         <span class="item-price">$10</span>
+      </div>
+
+    </div>
+
+    <!-- Chimichurri sub-section -->
+    <div class="subsection-label">
+      <span class="lang-en">Chimichurri</span>
+      <span class="lang-es">Chimichurri</span>
+    </div>
+    <p class="subsection-note">
+      <span class="lang-en">Dominican-style burgers — ask your server for pricing</span>
+      <span class="lang-es">Hamburguesas estilo dominicano — pregunte por los precios</span>
+    </p>
+
+    <div class="items-grid">
+
+      <div class="menu-item">
+        <div class="item-info">
+          <p class="item-name">
+            <span class="lang-en">Chimichurri</span>
+            <span class="lang-es">Chimichurri</span>
+          </p>
+          <div class="item-options">
+            <span class="opt"><span class="lang-en">Beef</span><span class="lang-es">Res</span></span>
+            <span class="opt"><span class="lang-en">Breaded Chicken</span><span class="lang-es">Pollo Empanado</span></span>
+            <span class="opt"><span class="lang-en">Grilled Chicken</span><span class="lang-es">Pollo a la Plancha</span></span>
+          </div>
+        </div>
+        <span class="item-price">—</span>
       </div>
 
     </div>
@@ -1997,145 +1943,35 @@
         </div>
       </div>
 
+      <div class="menu-item">
+        <div class="item-info">
+          <p class="item-name">
+            <span class="lang-en">Zeppole</span>
+            <span class="lang-es">Zeppole</span>
+          </p>
+          <p class="item-desc">
+            <span class="lang-en">3 pieces</span>
+            <span class="lang-es">3 piezas</span>
+          </p>
+        </div>
+        <span class="item-price">—</span>
+      </div>
+
     </div>
   </section>
 
   <!-- ── Catering ── -->
-  <section id="catering" class="menu-section">
-    <div class="section-header">
-      <span class="section-icon">🍽️</span>
-      <h2 class="section-title">
-        <span class="section-en">Catering</span>
-        <span class="section-es">Catering</span>
-      </h2>
-    </div>
-    <p class="section-note">
-      <span class="lang-en">Party trays available in Small, Medium &amp; Large — call us to order</span>
-      <span class="lang-es">Bandejas disponibles en Pequeño, Mediano y Grande — llámenos para ordenar</span>
-    </p>
-    <hr class="section-divider" />
-    <div style="overflow-x:auto;">
-      <table class="catering-table">
-        <thead>
-          <tr>
-            <th>
-              <span class="lang-en">Item</span>
-              <span class="lang-es">Artículo</span>
-            </th>
-            <th>
-              <span class="lang-en">S</span>
-              <span class="lang-es">P</span>
-            </th>
-            <th>
-              <span class="lang-en">M</span>
-              <span class="lang-es">M</span>
-            </th>
-            <th>
-              <span class="lang-en">L</span>
-              <span class="lang-es">G</span>
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><span class="lang-en">White Rice</span><span class="lang-es">Arroz Blanco</span></td>
-            <td>$25</td><td>$40</td><td>$50</td>
-          </tr>
-          <tr>
-            <td><span class="lang-en">Yellow Rice</span><span class="lang-es">Moro de Guandules</span></td>
-            <td>$30</td><td>$55</td><td>$70</td>
-          </tr>
-          <tr>
-            <td><span class="lang-en">Black Rice</span><span class="lang-es">Moro Negro</span></td>
-            <td>$30</td><td>$55</td><td>$70</td>
-          </tr>
-          <tr>
-            <td><span class="lang-en">Rice w/ Vegetable</span><span class="lang-es">Arroz con Vegetales</span></td>
-            <td>$30</td><td>$55</td><td>$70</td>
-          </tr>
-          <tr>
-            <td><span class="lang-en">Baked Chicken</span><span class="lang-es">Pollo Horneado</span></td>
-            <td>$30</td><td>$50</td><td>$80</td>
-          </tr>
-          <tr>
-            <td><span class="lang-en">Stewed Chicken</span><span class="lang-es">Pollo Guisado</span></td>
-            <td>$30</td><td>$50</td><td>$80</td>
-          </tr>
-          <tr>
-            <td><span class="lang-en">Pollo Cal</span><span class="lang-es">Pollo Cal</span></td>
-            <td>$30</td><td>$50</td><td>$80</td>
-          </tr>
-          <tr>
-            <td><span class="lang-en">BBQ Ribs</span><span class="lang-es">Costillas BBQ</span></td>
-            <td>$55</td><td>$80</td><td>$120</td>
-          </tr>
-          <tr>
-            <td><span class="lang-en">Pork Leg (Each)</span><span class="lang-es">Pernil (Unidad)</span></td>
-            <td>$50</td><td>$90</td><td>$140</td>
-          </tr>
-          <tr>
-            <td><span class="lang-en">Beef Stew</span><span class="lang-es">Res Guisada</span></td>
-            <td>$55</td><td>$100</td><td>$140</td>
-          </tr>
-          <tr>
-            <td><span class="lang-en">Baked Ziti</span><span class="lang-es">Ziti al Horno</span></td>
-            <td>$50</td><td>$70</td><td>$90</td>
-          </tr>
-          <tr>
-            <td><span class="lang-en">Baked Ziti w/ Chicken</span><span class="lang-es">Ziti al Horno con Pollo</span></td>
-            <td>$50</td><td>$70</td><td>$90</td>
-          </tr>
-          <tr>
-            <td><span class="lang-en">Baked Ziti w/ Beef</span><span class="lang-es">Ziti al Horno con Carne</span></td>
-            <td>$50</td><td>$70</td><td>$90</td>
-          </tr>
-          <tr>
-            <td><span class="lang-en">Baked Ziti w/ Shrimp</span><span class="lang-es">Ziti al Horno con Camarones</span></td>
-            <td>$60</td><td>$90</td><td>$150</td>
-          </tr>
-          <tr>
-            <td><span class="lang-en">Pastelón</span><span class="lang-es">Pastelón</span></td>
-            <td>$50</td><td>$70</td><td>$100</td>
-          </tr>
-          <tr>
-            <td><span class="lang-en">Lasagna</span><span class="lang-es">Lasaña</span></td>
-            <td>$50</td><td>$70</td><td>$100</td>
-          </tr>
-          <tr>
-            <td><span class="lang-en">Chicken Parmigiana</span><span class="lang-es">Pollo a la Parmesana</span></td>
-            <td>$50</td><td>$70</td><td>$100</td>
-          </tr>
-          <tr>
-            <td><span class="lang-en">Eggplant</span><span class="lang-es">Berengena</span></td>
-            <td>$50</td><td>$70</td><td>$100</td>
-          </tr>
-          <tr>
-            <td><span class="lang-en">Yuca</span><span class="lang-es">Yuca</span></td>
-            <td>$30</td><td>$50</td><td>$80</td>
-          </tr>
-          <tr>
-            <td><span class="lang-en">Buffalo Wings</span><span class="lang-es">Alitas de Pollo</span></td>
-            <td>$50</td><td>$75</td><td>$120</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
 
 </main>
 
 <footer>
   <span class="footer-name">La Nueva Mia</span>
-  <p>la Casa del Chimi &mdash; Pizzeria &amp; Restaurant</p>
+  <p>La Casa Del Chimi &mdash; Pizzeria &amp; Restaurant</p>
   <p style="margin-top:10px;">42 South Main St, Freeport, NY 11520</p>
+  <p style="margin-top:4px;"><a href="tel:5163771700">516-377-1700</a></p>
   <p style="margin-top:4px;">
-    <a href="tel:5163771700">516-377-1700</a> &nbsp;|&nbsp;
-    <a href="tel:5168670935">516-867-0935</a> &nbsp;|&nbsp;
-    <a href="tel:5163773233">516-377-3233</a>
-  </p>
-  <p style="margin-top:4px;">
-    <span class="lang-en">Corner of Sunrise Highway — Open 7 Days a Week</span>
-    <span class="lang-es">Esquina de Sunrise Highway — Abierto 7 Días a la Semana</span>
+    <span class="lang-en">Open 7 Days a Week</span>
+    <span class="lang-es">Abierto 7 Días a la Semana</span>
   </p>
 </footer>
 
