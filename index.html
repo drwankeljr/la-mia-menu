@@ -162,64 +162,25 @@
        HERO
     ───────────────────────────────────────── */
     .hero {
-      background: #000;
-      min-height: 300px;
+      background: var(--bg);
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 56px 24px 64px;
+      padding: 40px 24px 48px;
       position: relative;
-      overflow: hidden;
       text-align: center;
+      border-bottom: 4px solid transparent;
+      border-image: linear-gradient(90deg, var(--red) 0%, var(--red) 50%, var(--green) 50%, var(--green) 100%) 1;
     }
-    /* red slash behind name */
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: 0; left: -10%;
-      width: 120%; height: 100%;
-      background: linear-gradient(105deg,
-        transparent 0%, transparent 38%,
-        rgba(232,41,26,.07) 38%, rgba(232,41,26,.07) 62%,
-        transparent 62%);
-      pointer-events: none;
+    .hero::before { display: none; }
+    .hero::after { display: none; }
+    .hero-logo {
+      width: min(320px, 78vw);
+      height: auto;
+      display: block;
     }
-    /* bottom border stripe red/green like the logo */
-    .hero::after {
-      content: '';
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      height: 4px;
-      background: linear-gradient(90deg, var(--red) 0%, var(--red) 50%, var(--green) 50%, var(--green) 100%);
-    }
-    .hero-roof { position: relative; margin-bottom: 20px; }
-    .hero-roof svg { width: 100px; height: auto; }
-    .hero h1 {
-      font-family: 'Dancing Script', cursive;
-      font-size: clamp(2.6rem, 9vw, 4.4rem);
-      font-weight: 700;
-      color: var(--red);
-      line-height: 1;
-      text-shadow: 0 0 40px rgba(232,41,26,.4);
-    }
-    .hero .tagline {
-      font-family: 'Dancing Script', cursive;
-      font-size: clamp(1.1rem, 4vw, 1.8rem);
-      font-weight: 600;
-      color: #3FBFA0;
-      margin-top: 6px;
-    }
-    .hero .subtitle {
-      margin-top: 16px;
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: clamp(.75rem, 2vw, .95rem);
-      font-weight: 700;
-      letter-spacing: .35em;
-      color: rgba(242,242,242,.45);
-      text-transform: uppercase;
-    }
-    .hero-divider { display: none; }
+    .hero-roof, .hero h1, .hero .tagline, .hero .subtitle, .hero-divider { display: none; }
 
     /* ─────────────────────────────────────────
        STICKY NAV
@@ -581,13 +542,16 @@
       padding: 44px 24px;
       font-size: .88rem;
     }
-    footer .footer-name {
-      font-family: 'Dancing Script', cursive;
-      font-size: 2rem;
-      color: var(--red);
+    footer .footer-logo {
+      width: min(200px, 55vw);
+      height: auto;
       display: block;
-      margin-bottom: 10px;
+      margin: 0 auto 16px;
+      opacity: 0.92;
+      filter: brightness(0) invert(1);
     }
+    footer .footer-name { display: none; }
+    footer .footer-sub { display: none; }
     footer a { color: var(--yellow); text-decoration: none; }
     footer a:hover { color: var(--white); }
 
@@ -638,16 +602,7 @@
 
 <!-- ── Hero ── -->
 <header class="hero">
-  <div class="hero-roof">
-    <svg viewBox="0 0 200 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <polyline points="10,70 100,10 190,70" stroke="#2E5E1E" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
-      <polyline points="80,70 80,42 120,42 120,70" stroke="#2E5E1E" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-    </svg>
-  </div>
-  <h1>La Nueva Mia</h1>
-  <p class="tagline">la Casa del Chimi</p>
-  <p class="subtitle">Pizzeria &amp; Restaurant</p>
-  <div class="hero-divider"></div>
+  <img class="hero-logo" src="logo.png" alt="La Nueva Mia — La Casa del Chimi — Pizzeria & Restaurant" />
 </header>
 
 <!-- ── Sticky Nav ── -->
@@ -663,6 +618,7 @@
     <a class="nav-tab" href="#heroes"><span class="nav-en">Hot Heroes</span><span class="nav-es">Sándwich Caliente</span></a>
     <a class="nav-tab" href="#meats"><span class="nav-en">Entrée</span><span class="nav-es">Entrada</span></a>
     <a class="nav-tab" href="#seafood"><span class="nav-en">Seafood</span><span class="nav-es">Mariscos</span></a>
+    <a class="nav-tab" href="#kids"><span class="nav-en">Kids</span><span class="nav-es">Niños</span></a>
     <a class="nav-tab" href="#beverages"><span class="nav-en">Drinks</span><span class="nav-es">Bebidas</span></a>
     <a class="nav-tab" href="#desserts"><span class="nav-en">Desserts</span><span class="nav-es">Postres</span></a>
   </div>
@@ -749,15 +705,6 @@
       </div>
 
 
-      <div class="menu-item">
-        <div class="item-info">
-          <p class="item-name">
-            <span class="lang-en">Tostones a la Mia</span>
-            <span class="lang-es">Tostones a la Mia</span>
-          </p>
-        </div>
-        <span class="item-price">—</span>
-      </div>
 
     </div>
   </section>
@@ -929,6 +876,16 @@
         </div>
       </div>
 
+      <div class="menu-item">
+        <div class="item-info">
+          <p class="item-name">
+            <span class="lang-en">Tostones a la Mia</span>
+            <span class="lang-es">Tostones a la Mia</span>
+          </p>
+        </div>
+        <span class="item-price">—</span>
+      </div>
+
     </div>
   </section>
 
@@ -964,6 +921,8 @@
             <span class="opt"><span class="lang-en">Roast Pork</span><span class="lang-es">Pernil</span></span>
             <span class="opt"><span class="lang-en">Breaded Chicken</span><span class="lang-es">Pollo Empanado</span></span>
             <span class="opt"><span class="lang-en">Grilled Chicken</span><span class="lang-es">Pollo a la Plancha</span></span>
+            <span class="opt"><span class="lang-en">Shrimp</span><span class="lang-es">Camarones</span></span>
+            <span class="opt"><span class="lang-en">Vegan</span><span class="lang-es">Vegano</span></span>
           </div>
         </div>
         <span class="item-price">—</span>
@@ -990,8 +949,9 @@
           <div class="item-options">
             <span class="opt"><span class="lang-en">Chicken</span><span class="lang-es">Pollo</span></span>
             <span class="opt"><span class="lang-en">Beef</span><span class="lang-es">Res</span></span>
-            <span class="opt"><span class="lang-en">Pork</span><span class="lang-es">Cerdo</span></span>
+            <span class="opt"><span class="lang-en">Roast Pork</span><span class="lang-es">Pernil</span></span>
             <span class="opt"><span class="lang-en">Shrimp +$4</span><span class="lang-es">Camarones +$4</span></span>
+            <span class="opt"><span class="lang-en">Vegan</span><span class="lang-es">Vegano</span></span>
           </div>
         </div>
         <div class="size-price">
@@ -1085,12 +1045,18 @@
             <span class="lang-en">Fried Chicken Mofongo</span>
             <span class="lang-es">Mofongo de Pollo Frito</span>
           </p>
-          <p class="item-desc">
-            <span class="lang-en">Bone or Boneless</span>
-            <span class="lang-es">con Hueso o Deshuesado</span>
-          </p>
         </div>
         <span class="item-price">$16</span>
+      </div>
+
+      <div class="menu-item">
+        <div class="item-info">
+          <p class="item-name">
+            <span class="lang-en">Tinaja Mofongo</span>
+            <span class="lang-es">Mofongo en Tinaja</span>
+          </p>
+        </div>
+        <span class="item-price">—</span>
       </div>
 
     </div>
@@ -1142,6 +1108,18 @@
       <div class="pizza-card">
         <span class="pizza-name"><span class="lang-en">Vegan Chimi</span><span class="lang-es">Chimi Vegano</span></span>
         <span class="pizza-price">$28</span>
+      </div>
+      <div class="pizza-card">
+        <span class="pizza-name"><span class="lang-en">Caesar Salad</span><span class="lang-es">César</span></span>
+        <span class="pizza-price">—</span>
+      </div>
+      <div class="pizza-card">
+        <span class="pizza-name"><span class="lang-en">Sicilian</span><span class="lang-es">Siciliana</span></span>
+        <span class="pizza-price">—</span>
+      </div>
+      <div class="pizza-card">
+        <span class="pizza-name"><span class="lang-en">Hawaiian</span><span class="lang-es">Hawaiana</span></span>
+        <span class="pizza-price">—</span>
       </div>
     </div>
   </section>
@@ -1389,8 +1367,8 @@
       <div class="menu-item">
         <div class="item-info">
           <p class="item-name">
-            <span class="lang-en">Fried Steak</span>
-            <span class="lang-es">Bistec Frito</span>
+            <span class="lang-en">Carne Frita</span>
+            <span class="lang-es">Carne Frita</span>
           </p>
           <p class="item-desc">
             <span class="lang-en">Beef or Pork</span>
@@ -1444,6 +1422,26 @@
         <span class="item-price">$16</span>
       </div>
 
+      <div class="menu-item">
+        <div class="item-info">
+          <p class="item-name">
+            <span class="lang-en">Fried Chicken w/ Garlic Sauce</span>
+            <span class="lang-es">Pica Pollo con Wasakaka</span>
+          </p>
+        </div>
+        <span class="item-price">—</span>
+      </div>
+
+      <div class="menu-item">
+        <div class="item-info">
+          <p class="item-name">
+            <span class="lang-en">Shrimp Stuffed Chicken Breast</span>
+            <span class="lang-es">Pechuga Rellena con Camarones</span>
+          </p>
+        </div>
+        <span class="item-price">$22</span>
+      </div>
+
     </div>
   </section>
 
@@ -1463,15 +1461,6 @@
     <hr class="section-divider" />
     <div class="items-grid">
 
-      <div class="menu-item">
-        <div class="item-info">
-          <p class="item-name">
-            <span class="lang-en">Chicken Filled w/ Shrimp</span>
-            <span class="lang-es">Pollo Relleno con Camarones</span>
-          </p>
-        </div>
-        <span class="item-price">$22</span>
-      </div>
 
       <div class="menu-item">
         <div class="item-info">
@@ -1501,29 +1490,14 @@
       <div class="menu-item">
         <div class="item-info">
           <p class="item-name">
-            <span class="lang-en">Grilled Fish Fillet</span>
-            <span class="lang-es">Filete de Pescado a la Plancha</span>
+            <span class="lang-en">Fish Fillet</span>
+            <span class="lang-es">Filete de Pescado</span>
           </p>
-        </div>
-        <span class="item-price">$16</span>
-      </div>
-
-      <div class="menu-item">
-        <div class="item-info">
-          <p class="item-name">
-            <span class="lang-en">Garlic Fish Fillet</span>
-            <span class="lang-es">Filete de Pescado al Ajillo</span>
-          </p>
-        </div>
-        <span class="item-price">$16</span>
-      </div>
-
-      <div class="menu-item">
-        <div class="item-info">
-          <p class="item-name">
-            <span class="lang-en">Baked Fish Fillet</span>
-            <span class="lang-es">Filete de Pescado al Horno</span>
-          </p>
+          <div class="item-options">
+            <span class="opt"><span class="lang-en">Grilled</span><span class="lang-es">a la Plancha</span></span>
+            <span class="opt"><span class="lang-en">Garlic</span><span class="lang-es">al Ajillo</span></span>
+            <span class="opt"><span class="lang-en">Baked</span><span class="lang-es">al Horno</span></span>
+          </div>
         </div>
         <span class="item-price">$16</span>
       </div>
@@ -1575,6 +1549,51 @@
           </p>
         </div>
         <span class="item-price">$19</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── Kids ── -->
+  <section id="kids" class="menu-section">
+    <div class="section-header">
+      <span class="section-icon">⭐</span>
+      <h2 class="section-title">
+        <span class="section-en">Kids</span>
+        <span class="section-es">Niños</span>
+      </h2>
+    </div>
+    <hr class="section-divider" />
+    <div class="items-grid">
+
+      <div class="menu-item">
+        <div class="item-info">
+          <p class="item-name">
+            <span class="lang-en">Chicken Fingers</span>
+            <span class="lang-es">Deditos de Pollo</span>
+          </p>
+        </div>
+        <span class="item-price">—</span>
+      </div>
+
+      <div class="menu-item">
+        <div class="item-info">
+          <p class="item-name">
+            <span class="lang-en">Pasta Bowl</span>
+            <span class="lang-es">Tazón de Pasta</span>
+          </p>
+        </div>
+        <span class="item-price">—</span>
+      </div>
+
+      <div class="menu-item">
+        <div class="item-info">
+          <p class="item-name">
+            <span class="lang-en">Mozzarella Sticks</span>
+            <span class="lang-es">Palitos de Mozzarella</span>
+          </p>
+        </div>
+        <span class="item-price">—</span>
       </div>
 
     </div>
@@ -1706,25 +1725,13 @@
       <div class="menu-item">
         <div class="item-info">
           <p class="item-name">
-            <span class="lang-en">Tiramisu</span>
-            <span class="lang-es">Tiramisú</span>
+            <span class="lang-en">Chocolate Cake</span>
+            <span class="lang-es">Pastel de Chocolate</span>
           </p>
         </div>
         <span class="item-price">$4</span>
       </div>
 
-      <div class="menu-item">
-        <div class="item-info">
-          <p class="item-name">
-            <span class="lang-en">Majaretes / Atole</span>
-            <span class="lang-es">Majaretes / Atole</span>
-          </p>
-        </div>
-        <div class="size-price">
-          <div class="size-badge"><span class="sz">S</span><span class="pr">$6</span></div>
-          <div class="size-badge"><span class="sz">L</span><span class="pr">$12</span></div>
-        </div>
-      </div>
 
       <div class="menu-item">
         <div class="item-info">
@@ -1758,8 +1765,7 @@
 </main>
 
 <footer>
-  <span class="footer-name">La Nueva Mia</span>
-  <p>La Casa Del Chimi &mdash; Pizzeria &amp; Restaurant</p>
+  <img class="footer-logo" src="logo.png" alt="La Nueva Mia" />
   <p style="margin-top:10px;">42 South Main St, Freeport, NY 11520</p>
   <p style="margin-top:4px;"><a href="tel:5163771700">516-377-1700</a></p>
   <p style="margin-top:4px;">
