@@ -37,10 +37,10 @@
 
   <style>
     /* ─────────────────────────────────────────
-       LANGUAGE SYSTEM
+       LANGUAGE SYSTEM — Spanish primary
     ───────────────────────────────────────── */
-    .lang-en { display: block; }
-    .lang-es {
+    .lang-es { display: block; }
+    .lang-en {
       display: block;
       font-style: italic;
       color: var(--gray);
@@ -49,16 +49,22 @@
       line-height: 1.3;
     }
 
-    .item-name .lang-en { font-weight: 600; color: var(--white); font-style: normal; font-size: 1em; }
-    .item-name .lang-es { font-weight: 400; }
+    .item-name .lang-es { font-weight: 600; color: var(--white); font-style: normal; font-size: 1em; }
+    .item-name .lang-en { font-weight: 400; }
 
-    .item-desc .lang-en { font-style: italic; color: var(--gray); font-size: 1em; }
-    .item-desc .lang-es { font-size: .9em; }
+    .item-desc .lang-es { font-style: italic; color: var(--gray); font-size: 1em; }
+    .item-desc .lang-en { font-size: .9em; }
 
-    /* Section title: EN = big all-caps, ES = small subtitle below */
-    .section-en { display: block; color: var(--white); }
-    .section-en::after { content: ''; }
+    /* Section title: ES = big all-caps, EN = small subtitle below */
     .section-es {
+      display: block;
+      color: var(--white);
+      font-size: 1em;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      letter-spacing: .02em;
+    }
+    .section-en {
       display: block;
       font-family: 'DM Sans', sans-serif;
       font-size: .34em;
@@ -70,61 +76,17 @@
       margin-top: 2px;
     }
 
-    .section-note .lang-es { font-size: .9em; margin-top: 2px; }
-    .nav-es { display: none; }
-    .chimi-note .lang-es { font-size: .9em; margin-top: 2px; }
-    td .lang-en { font-size: 1em; }
-    td .lang-es  { font-size: .82em; margin-top: 1px; color: var(--gray); font-style: italic; }
-    .pizza-card .lang-es { font-size: .75em; margin-top: 2px; color: var(--gray); }
+    .section-note .lang-en { font-size: .9em; margin-top: 2px; }
+    .nav-en { display: none; }
+    .nav-es { display: inline; }
+    td .lang-es { font-size: 1em; }
+    td .lang-en  { font-size: .82em; margin-top: 1px; color: var(--gray); font-style: italic; }
+    .pizza-card .lang-en { font-size: .75em; margin-top: 2px; color: var(--gray); }
+    .pizza-card .lang-es { font-size: 1em; color: var(--white); font-style: normal; font-weight: 600; }
 
-    /* EN-only */
-    body.mode-en .lang-es    { display: none !important; }
-    body.mode-en .section-es { display: none !important; }
-    body.mode-en .nav-es     { display: none !important; }
-
-    /* ES-only */
-    body.mode-es .lang-en    { display: none !important; }
-    body.mode-es .nav-en     { display: none !important; }
-    body.mode-es .nav-es     { display: inline !important; }
-    body.mode-es .section-en { display: none !important; }
-    body.mode-es .section-es {
-      font-size: 1em !important;
-      color: var(--white) !important;
-      letter-spacing: .02em !important;
-      font-weight: 900 !important;
-      font-family: 'Barlow Condensed', sans-serif !important;
-      margin-top: 0 !important;
-    }
-    body.mode-es .item-name .lang-es {
-      font-style: normal !important;
-      color: var(--white) !important;
-      font-size: 1em !important;
-      font-weight: 600 !important;
-    }
-    body.mode-es .item-desc .lang-es {
-      font-style: italic !important;
-      color: var(--gray) !important;
-      font-size: 1em !important;
-    }
-    body.mode-es .pizza-card .lang-es {
-      font-size: 1em !important;
-      color: var(--white) !important;
-      font-style: normal !important;
-      font-weight: 600 !important;
-    }
-    body.mode-es td .lang-es        { font-size: 1em !important; color: var(--white) !important; font-style: normal !important; }
-    body.mode-es .section-note .lang-es { font-size: 1em !important; }
-    body.mode-es .chimi-note .lang-es   { font-size: 1em !important; }
-
-    /* Option badges — ES */
-    body.mode-en .opt .lang-es { display: none !important; }
-    body.mode-es .opt .lang-en { display: none !important; }
-    body.mode-es .opt .lang-es {
-      font-style: normal !important;
-      color: var(--white) !important;
-      font-size: .8rem !important;
-      font-weight: 600 !important;
-    }
+    /* Option badges */
+    .opt .lang-en { font-size: .78rem; font-style: italic; color: var(--gray); font-weight: 400; }
+    .opt .lang-es { font-style: normal; color: var(--white); font-size: .8rem; font-weight: 600; }
 
     /* ─────────────────────────────────────────
        LANGUAGE SWITCHER
@@ -817,6 +779,12 @@
             <span class="lang-en">French Fries</span>
             <span class="lang-es">Papas Fritas</span>
           </p>
+          <div class="item-options">
+            <span class="opt">
+              <span class="lang-es">Con Queso <small style="font-weight:400;font-size:.85em;color:var(--gray)">+$2</small></span>
+              <span class="lang-en">Cheese +$2</span>
+            </span>
+          </div>
         </div>
         <div class="size-price">
           <div class="size-badge"><span class="sz">S</span><span class="pr">$4</span></div>
@@ -827,22 +795,15 @@
       <div class="menu-item">
         <div class="item-info">
           <p class="item-name">
-            <span class="lang-en">Cheese Fries</span>
-            <span class="lang-es">Papas Fritas con Queso</span>
-          </p>
-        </div>
-        <div class="size-price">
-          <div class="size-badge"><span class="sz">S</span><span class="pr">$6</span></div>
-          <div class="size-badge"><span class="sz">L</span><span class="pr">$10</span></div>
-        </div>
-      </div>
-
-      <div class="menu-item">
-        <div class="item-info">
-          <p class="item-name">
             <span class="lang-en">Fried Plantains</span>
             <span class="lang-es">Tostones</span>
           </p>
+          <div class="item-options">
+            <span class="opt">
+              <span class="lang-es">A La Mia <small style="font-weight:400;font-size:.85em;color:var(--gray)">+$2</small></span>
+              <span class="lang-en">A La Mia +$2</span>
+            </span>
+          </div>
         </div>
         <div class="size-price">
           <div class="size-badge"><span class="sz">S</span><span class="pr">$4</span></div>
@@ -877,11 +838,12 @@
         </div>
       </div>
 
+
       <div class="menu-item">
         <div class="item-info">
           <p class="item-name">
-            <span class="lang-en">Tostones a la Mia</span>
-            <span class="lang-es">Tostones a la Mia</span>
+            <span class="lang-en">Yuca Fries</span>
+            <span class="lang-es">Yuca Frita</span>
           </p>
         </div>
         <span class="item-price">—</span>
@@ -895,16 +857,12 @@
     <div class="section-header">
       <span class="section-icon">🍌</span>
       <h2 class="section-title">
-        <span class="section-en">Chimis & Yaroas</span>
         <span class="section-es">Chimis & Yaroas</span>
       </h2>
     </div>
     <hr class="section-divider" />
 
-    <div class="subsection-label">
-      <span class="lang-en">Chimichurri</span>
-      <span class="lang-es">Chimichurri</span>
-    </div>
+    <div class="subsection-label">Chimichurri</div>
     <p class="subsection-note">
       <span class="lang-en">Dominican-style burgers — ask your server for pricing</span>
       <span class="lang-es">Hamburguesas estilo dominicano — pregunte por los precios</span>
@@ -913,10 +871,6 @@
 
       <div class="menu-item">
         <div class="item-info">
-          <p class="item-name">
-            <span class="lang-en">Chimichurri</span>
-            <span class="lang-es">Chimichurri</span>
-          </p>
           <div class="item-options">
             <span class="opt"><span class="lang-en">Beef</span><span class="lang-es">Res</span></span>
             <span class="opt"><span class="lang-en">Roast Pork</span><span class="lang-es">Pernil</span></span>
@@ -931,10 +885,7 @@
 
     </div>
 
-    <div class="subsection-label">
-      <span class="lang-en">Yaroas</span>
-      <span class="lang-es">Yaroas</span>
-    </div>
+    <div class="subsection-label">Yaroas</div>
     <p class="subsection-note">
       <span class="lang-en">Served with Sweet Plantains or French Fries</span>
       <span class="lang-es">Se sirve con Maduros o Papas Fritas</span>
@@ -943,10 +894,6 @@
 
       <div class="menu-item">
         <div class="item-info">
-          <p class="item-name">
-            <span class="lang-en">Yaroa</span>
-            <span class="lang-es">Yaroa</span>
-          </p>
           <div class="item-options">
             <span class="opt"><span class="lang-en">Chicken</span><span class="lang-es">Pollo</span></span>
             <span class="opt"><span class="lang-en">Beef</span><span class="lang-es">Res</span></span>
@@ -969,7 +916,6 @@
     <div class="section-header">
       <span class="section-icon">🫙</span>
       <h2 class="section-title">
-        <span class="section-en">Mofongos</span>
         <span class="section-es">Mofongos</span>
       </h2>
     </div>
@@ -990,15 +936,6 @@
         <span class="item-price">$18</span>
       </div>
 
-      <div class="menu-item">
-        <div class="item-info">
-          <p class="item-name">
-            <span class="lang-en">Lobster Tail Mofongo</span>
-            <span class="lang-es">Mofongo de Cola de Langosta</span>
-          </p>
-        </div>
-        <span class="item-price">$35</span>
-      </div>
 
       <div class="menu-item">
         <div class="item-info">
@@ -1170,26 +1107,19 @@
       <div class="menu-item">
         <div class="item-info">
           <p class="item-name">
-            <span class="lang-en">Baked Ziti a la Mia</span>
-            <span class="lang-es">Ziti al Horno La Mia</span>
+            <span class="lang-en">Baked Ziti</span>
+            <span class="lang-es">Ziti al Horno</span>
           </p>
+          <div class="item-options">
+            <span class="opt">
+              <span class="lang-es">A La Mia <small style="font-weight:400;font-size:.85em;color:var(--gray)">+$4</small></span>
+              <span class="lang-en">A La Mia +$4</span>
+            </span>
+          </div>
         </div>
         <div class="size-price">
           <div class="size-badge"><span class="sz">S</span><span class="pr">$10</span></div>
           <div class="size-badge"><span class="sz">L</span><span class="pr">$13</span></div>
-        </div>
-      </div>
-
-      <div class="menu-item">
-        <div class="item-info">
-          <p class="item-name">
-            <span class="lang-en">Baked Ziti</span>
-            <span class="lang-es">Ziti al Horno</span>
-          </p>
-        </div>
-        <div class="size-price">
-          <div class="size-badge"><span class="sz">S</span><span class="pr">$12</span></div>
-          <div class="size-badge"><span class="sz">L</span><span class="pr">$14</span></div>
         </div>
       </div>
 
@@ -1206,18 +1136,6 @@
         </div>
       </div>
 
-      <div class="menu-item">
-        <div class="item-info">
-          <p class="item-name">
-            <span class="lang-en">Cheese Ravioli</span>
-            <span class="lang-es">Ravioli de Queso</span>
-          </p>
-        </div>
-        <div class="size-price">
-          <div class="size-badge"><span class="sz">S</span><span class="pr">$11</span></div>
-          <div class="size-badge"><span class="sz">L</span><span class="pr">$14</span></div>
-        </div>
-      </div>
 
 
 
@@ -1246,15 +1164,6 @@
         <span class="item-price">$10</span>
       </div>
 
-      <div class="menu-item">
-        <div class="item-info">
-          <p class="item-name">
-            <span class="lang-en">Veal Parmigiana Hero</span>
-            <span class="lang-es">Sándwich de Ternera a la Parmesana</span>
-          </p>
-        </div>
-        <span class="item-price">$12</span>
-      </div>
 
       <div class="menu-item">
         <div class="item-info">
@@ -1306,6 +1215,16 @@
         <span class="item-price">$10</span>
       </div>
 
+      <div class="menu-item">
+        <div class="item-info">
+          <p class="item-name">
+            <span class="lang-en">Dominican Plantain Sandwich</span>
+            <span class="lang-es">Patacón</span>
+          </p>
+        </div>
+        <span class="item-price">—</span>
+      </div>
+
     </div>
   </section>
 
@@ -1328,11 +1247,11 @@
       <div class="menu-item">
         <div class="item-info">
           <p class="item-name">
-            <span class="lang-en">Grilled Steak</span>
-            <span class="lang-es">Bistec a la Plancha</span>
+            <span class="lang-en">Surf &amp; Turf</span>
+            <span class="lang-es">Mar &amp; Tierra</span>
           </p>
         </div>
-        <span class="item-price">$16</span>
+        <span class="item-price">—</span>
       </div>
 
       <div class="menu-item">
@@ -1355,20 +1274,11 @@
         <span class="item-price">$24</span>
       </div>
 
-      <div class="menu-item">
-        <div class="item-info">
-          <p class="item-name">
-            <span class="lang-en">Sirloin</span>
-            <span class="lang-es">Sirloin</span>
-          </p>
-        </div>
-        <span class="item-price">$24</span>
-      </div>
 
       <div class="menu-item">
         <div class="item-info">
           <p class="item-name">
-            <span class="lang-en">Carne Frita</span>
+            <span class="lang-en">Crispy Fried Meat</span>
             <span class="lang-es">Carne Frita</span>
           </p>
           <p class="item-desc">
@@ -1413,34 +1323,26 @@
         <span class="item-price">$15</span>
       </div>
 
-      <div class="menu-item">
-        <div class="item-info">
-          <p class="item-name">
-            <span class="lang-en">Chicken Fingers</span>
-            <span class="lang-es">Deditos de Pollo</span>
-          </p>
-        </div>
-        <span class="item-price">$16</span>
-      </div>
 
       <div class="menu-item">
         <div class="item-info">
           <p class="item-name">
-            <span class="lang-en">Fried Chicken w/ Garlic Sauce</span>
+            <span class="lang-en">Fried Chicken w/ Wasakaka Sauce</span>
             <span class="lang-es">Pica Pollo con Wasakaka</span>
           </p>
         </div>
         <span class="item-price">—</span>
       </div>
 
+
       <div class="menu-item">
         <div class="item-info">
           <p class="item-name">
-            <span class="lang-en">Shrimp Stuffed Chicken Breast</span>
-            <span class="lang-es">Pechuga Rellena con Camarones</span>
+            <span class="lang-en">Crispy Fried Chicken Strips</span>
+            <span class="lang-es">Pechurina</span>
           </p>
         </div>
-        <span class="item-price">$22</span>
+        <span class="item-price">—</span>
       </div>
 
     </div>
@@ -1491,8 +1393,8 @@
       <div class="menu-item">
         <div class="item-info">
           <p class="item-name">
-            <span class="lang-en">Fish Fillet</span>
-            <span class="lang-es">Filete de Pescado</span>
+            <span class="lang-en">Fish Fillet (Basa)</span>
+            <span class="lang-es">Filete de Pescado Basa</span>
           </p>
           <div class="item-options">
             <span class="opt"><span class="lang-en">Grilled</span><span class="lang-es">a la Plancha</span></span>
@@ -1507,50 +1409,46 @@
         <div class="item-info">
           <p class="item-name">
             <span class="lang-en">Red Snapper</span>
-            <span class="lang-es">Chillo (Red Snapper)</span>
+            <span class="lang-es">Chillo</span>
           </p>
         </div>
         <span class="item-price">$25</span>
       </div>
 
+      <div class="menu-item">
+        <div class="item-info">
+          <p class="item-name">
+            <span class="lang-en">Red Tilapia</span>
+            <span class="lang-es">Tilapia Roja</span>
+          </p>
+        </div>
+        <span class="item-price">—</span>
+      </div>
 
       <div class="menu-item">
         <div class="item-info">
           <p class="item-name">
-            <span class="lang-en">Paella Marinara</span>
-            <span class="lang-es">Paella Marinara</span>
+            <span class="lang-en">Paella</span>
+            <span class="lang-es">Paella</span>
           </p>
           <p class="item-desc">
             <span class="lang-en">For 2</span>
             <span class="lang-es">Para 2</span>
           </p>
+          <div class="item-options">
+            <span class="opt">
+              <span class="lang-es">Marinera <small style="font-weight:400;font-size:.85em;color:var(--gray)">$40</small></span>
+              <span class="lang-en">Marinera $40</span>
+            </span>
+            <span class="opt">
+              <span class="lang-es">Valenciana <small style="font-weight:400;font-size:.85em;color:var(--gray)">$45</small></span>
+              <span class="lang-en">Valenciana $45</span>
+            </span>
+          </div>
         </div>
-        <span class="item-price">$40</span>
+        <span class="item-price">—</span>
       </div>
 
-      <div class="menu-item">
-        <div class="item-info">
-          <p class="item-name">
-            <span class="lang-en">Paella Valencia</span>
-            <span class="lang-es">Paella Valenciana</span>
-          </p>
-          <p class="item-desc">
-            <span class="lang-en">For 2</span>
-            <span class="lang-es">Para 2</span>
-          </p>
-        </div>
-        <span class="item-price">$45</span>
-      </div>
-
-      <div class="menu-item">
-        <div class="item-info">
-          <p class="item-name">
-            <span class="lang-en">Shrimp Scampi</span>
-            <span class="lang-es">Camarones Scampi</span>
-          </p>
-        </div>
-        <span class="item-price">$19</span>
-      </div>
 
     </div>
   </section>
